@@ -27,6 +27,8 @@ cd zerodha-equity-publisher
 #### Server
 Switch the directory to server and perform the following
 
+> Try to use a virtual environment for the server
+
 **Install pip packages**
 ```sh
 pip install -r requirements.txt
