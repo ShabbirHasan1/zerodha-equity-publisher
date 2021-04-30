@@ -33,7 +33,7 @@ Switch the directory to server and perform the following
 ```sh
 pip install -r requirements.txt
 ```
-**Create a ```.env``` file and add the following variables**
+**Create a ```.env``` file in the ``zerodha_bhavcopy_tracker`` directory and add the following variables**
 ```sh
 REDIS_URL="redis:<your_url>"
 SECRET_KEY="Your secret key"
