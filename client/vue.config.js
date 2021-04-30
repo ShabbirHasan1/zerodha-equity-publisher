@@ -1,9 +1,10 @@
 
 module.exports = {
+  filenameHashing: false,
   devServer: {
     proxy: {
       '^/api': {
-        target: 'http://localhost:8000',
+        target: process.env.BACKEND_URL,
         changeOrigin: true
       },
     }

@@ -9,7 +9,7 @@
     <h4 class="mt-5 pt-5 text-center text-decoration-underline">Bhavcopy for the date {{ lastUpdated }}</h4>
     <div class="row w-100 mt-5 p-2 border border-outlined" style="--bs-gutter-x: 0">
       <div class="col-md-8">
-        <a v-if="equities.length" :href="'/api/equities/export/' + name" class="btn btn-outline-dark">Export as CSV  <i class="fa fa-download"></i></a>
+        <a v-if="equities && equities.length" :href="'/api/equities/export/' + name" class="btn btn-outline-dark">Export as CSV  <i class="fa fa-download"></i></a>
       </div>
       <form class="col-md-4" @submit="search">
         <div class="input-group">

@@ -11,7 +11,7 @@
           <th scope="col">Close</th>
         </tr>
       </thead>
-      <tbody v-if="equities.length">
+      <tbody v-if="equities && equities.length">
         <tr :class="[parseFloat(equity.close) > parseFloat(equity.open) ? 'table-success' : parseFloat(equity.close) < parseFloat(equity.open) ? 'table-danger' : '']" v-for="equity in [...equities].slice((currentPage-1)*20, (currentPage)*20)" :key="equity.code">
           <th scope="row">{{ equity.code }}</th>
           <td>{{ equity.name }}</td>
@@ -67,11 +67,13 @@ export default {
   },
   watch: {
     equities(value){
-      const tabs = parseInt(value.length/20) + 1
-      this.tabs = tabs
-      this.tabLowerBound = 1;
-      this.tabUpperBound = tabs > 10 ? 10 : tabs;
-      this.currentPage = 1;
+      if(value) {
+        const tabs = parseInt(value.length/20) + 1
+        this.tabs = tabs
+        this.tabLowerBound = 1;
+        this.tabUpperBound = tabs > 10 ? 10 : tabs;
+        this.currentPage = 1;
+      }
     },
     currentPage(value) {
       if(value == this.tabUpperBound && this.tabUpperBound != this.tabs){
