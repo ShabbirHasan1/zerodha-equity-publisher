@@ -16,7 +16,8 @@ def downloadAndLoadToRedis():
     
     try:
         today = date.today().strftime("%d%m%y")
-        req = Request('https://bseindia.com/download/bhavcopy/equity/eq' + today + '_csv.zip', headers={'User-Agent': 'Mozilla/5.0'})
+        ZERODHA_URL = 'https://bseindia.com/download/bhavcopy/equity/eq' + today + '_csv.zip'
+        req = Request(ZERODHA_URL, headers={'User-Agent': 'Mozilla/5.0'})
         resp = urlopen(req)
         zipfile = ZipFile(BytesIO(resp.read()))
         
