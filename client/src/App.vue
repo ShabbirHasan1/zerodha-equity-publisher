@@ -45,7 +45,6 @@
       <div v-if="loading" class="text-center">
         <div
           class="spinner-grow text-primary"
-          style="margin-top: 100px;"
           role="status"
         >
           <span class="sr-only">Loading...</span>
