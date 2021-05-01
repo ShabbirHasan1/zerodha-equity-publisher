@@ -18,15 +18,7 @@
         class="row w-100 mt-5 p-2 border border-outlined"
         style="--bs-gutter-x: 0"
       >
-        <div class="col-md-8">
-          <a
-            v-if="equities && equities.length"
-            :href="'/api/equities/export/' + name"
-            class="btn btn-outline-dark"
-            >Export as CSV <i class="fa fa-download"></i
-          ></a>
-        </div>
-        <form class="col-md-4" @submit="search">
+        <form class="col-md-4 order-md-2" @submit="search">
           <div class="input-group">
             <input
               class="form-control"
@@ -41,6 +33,13 @@
             </div>
           </div>
         </form>
+        <div v-if="equities && equities.length" class="col-md-8 order-md-1 pt-2 text-center text-md-start pt-md-0">
+          <a
+            :href="'/api/equities/export/' + name"
+            class="btn btn-outline-dark"
+            >Export as CSV <i class="fa fa-download"></i
+          ></a>
+        </div>
       </div>
       <div v-if="loading" class="text-center py-3">
         <div
