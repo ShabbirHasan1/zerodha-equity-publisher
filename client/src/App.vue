@@ -42,7 +42,7 @@
           </div>
         </form>
       </div>
-      <div v-if="loading" class="my-5 pt-5 text-center">
+      <div v-if="loading" class="text-center">
         <div
           class="spinner-grow text-primary"
           style="margin-top: 100px;"
