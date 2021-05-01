@@ -42,7 +42,7 @@
           </div>
         </form>
       </div>
-      <div v-if="loading" class="text-center">
+      <div v-if="loading" class="text-center py-3">
         <div
           class="spinner-grow text-primary"
           role="status"
