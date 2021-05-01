@@ -89,7 +89,7 @@ export default {
       this.loading = false;
     },
     async loadEquities() {
-      // this.loading = true;
+      this.loading = true;
       const { equities, lastUpdated } = await fetchAllEquities();
       this.equities = equities;
       this.lastUpdated = lastUpdated;
