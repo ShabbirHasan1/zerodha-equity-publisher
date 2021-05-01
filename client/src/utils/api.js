@@ -15,6 +15,10 @@ export const fetchAllEquities = async () => {
   } catch (err) {
     console.error(err);
   }
+  return {
+    equities: [],
+    lastUpdated: null,
+  };
 };
 
 export const fetchEquitiesByName = async (name) => {

@@ -4,31 +4,49 @@
       <span class="navbar-brand">
         Bhavcopy
       </span>
-      <a class="btn btn-outline-light ml-auto"><i class="fa fa-github" aria-hidden="true"></i></a>
+      <a class="btn btn-outline-light ml-auto"
+        ><i class="fa fa-github" aria-hidden="true"></i
+      ></a>
     </nav>
-    <h4 class="mt-5 pt-5 text-center text-decoration-underline">Bhavcopy for the date {{ lastUpdated }}</h4>
-    <div class="row w-100 mt-5 p-2 border border-outlined" style="--bs-gutter-x: 0">
-      <div class="col-md-8">
-        <a v-if="equities && equities.length" :href="'/api/equities/export/' + name" class="btn btn-outline-dark">Export as CSV  <i class="fa fa-download"></i></a>
+    <div v-if="loading" class="mt-5 pt-5 text-center">
+      <div class="spinner-grow text-primary" style="margin-top: 100px;" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-      <form class="col-md-4" @submit="search">
-        <div class="input-group">
-          <input
-            class="form-control"
-            style="margin-right: 0.3rem"
-            placeholder="Search by company name"
-            @change="changeName"
-            
-          />
-          <div class="input-group-append">
-            <button class="input-group-text btn btn-success">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </form>
     </div>
-    <Body v-bind:equities="equities" />
+    <div v-else class="mt-5 pt-5">
+      <h4 v-if="lastUpdated" class="text-center text-decoration-underline">
+        Bhavcopy for the date {{ lastUpdated }}
+      </h4>
+      <div
+        class="row w-100 mt-5 p-2 border border-outlined"
+        style="--bs-gutter-x: 0"
+      >
+        <div class="col-md-8">
+          <a
+            v-if="equities && equities.length"
+            :href="'/api/equities/export/' + name"
+            class="btn btn-outline-dark"
+            >Export as CSV <i class="fa fa-download"></i
+          ></a>
+        </div>
+        <form class="col-md-4" @submit="search">
+          <div class="input-group">
+            <input
+              class="form-control"
+              style="margin-right: 0.3rem"
+              placeholder="Search by company name"
+              @change="changeName"
+            />
+            <div class="input-group-append">
+              <button class="input-group-text btn btn-success">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <Body v-bind:equities="equities" />
+    </div>
   </section>
 </template>
 
@@ -43,24 +61,29 @@ export default {
   },
   data() {
     return {
+      loading: true,
       equities: [],
       lastUpdated: "",
-      name: ''
+      name: "",
     };
   },
   methods: {
     changeName({ target: { value } }) {
       this.name = value;
-      if(!value) this.loadEquities();
+      if (!value) this.loadEquities();
     },
     async search(e) {
       e.preventDefault();
+      this.loading = true;
       this.equities = await fetchEquitiesByName(this.name);
+      this.loading = false;
     },
     async loadEquities() {
+      // this.loading = true;
       const { equities, lastUpdated } = await fetchAllEquities();
       this.equities = equities;
       this.lastUpdated = lastUpdated;
+      this.loading = false;
     },
   },
   mounted() {
