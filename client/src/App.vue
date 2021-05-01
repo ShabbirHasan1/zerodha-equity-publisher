@@ -53,7 +53,7 @@
     </div>
     <div class="text-center text-secondary">
       <p>
-        *Data updates every business day at 18:00 PM IST (UTC +05:30)
+        *Data updates on every business day at 18:00 PM IST (UTC +05:30)
       </p>
     </div>
   </section>
