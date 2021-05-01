@@ -47,9 +47,10 @@ def downloadAndLoadToRedis():
             redis_client.hmset(name, equity)
         today = date.today().strftime("%d - %m - %y")
         redis_client.hmset('lastUpdated', {'lastUpdated': today})
-        f.writelines('Data pull success on ' + today)
+        f.writelines('Data pull success on ' + today + '\n')
 
     except Exception as e:
-        f.writelines(str(e) + '\n')
+        today = date.today().strftime("%d - %m - %y")
+        f.writelines('Data pull failed on ' + today + '. Error Captured : ' + str(e) + '\n')
     f.close()
 
