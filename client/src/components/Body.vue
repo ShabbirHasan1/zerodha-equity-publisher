@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody v-if="equities && equities.length">
-        <tr :class="[parseFloat(equity.close) > parseFloat(equity.open) ? 'table-success' : parseFloat(equity.close) < parseFloat(equity.open) ? 'table-danger' : '']" v-for="equity in [...equities].slice((currentPage-1)*20, (currentPage)*20)" :key="equity.code">
+        <tr :class="[parseFloat(equity.close) > parseFloat(equity.open) ? 'table-success' : parseFloat(equity.close) < parseFloat(equity.open) ? 'table-danger' : 'table-warning']" v-for="equity in [...equities].slice((currentPage-1)*20, (currentPage)*20)" :key="equity.code">
           <th scope="row">{{ equity.code }}</th>
           <td>{{ equity.name }}</td>
           <td>{{ equity.open }}</td>
