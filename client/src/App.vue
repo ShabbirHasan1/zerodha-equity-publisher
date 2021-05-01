@@ -4,7 +4,7 @@
       <span class="navbar-brand">
         Bhavcopy
       </span>
-      <a class="btn btn-outline-light ml-auto"
+      <a href="https://github.com/allenabraham777/zerodha-equity-publisher" class="btn btn-outline-light ml-auto"
         ><i class="fa fa-github" aria-hidden="true"></i
       ></a>
     </nav>
@@ -46,6 +46,11 @@
         </form>
       </div>
       <Body v-bind:equities="equities" />
+    </div>
+    <div class="text-center text-secondary">
+      <p>
+        *Data updates everyday at 18:00 PM IST (UTC +05:30)
+      </p>
     </div>
   </section>
 </template>
