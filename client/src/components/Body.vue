@@ -67,11 +67,13 @@ export default {
   },
   watch: {
     equities(value){
-      const tabs = (parseInt(value.length/20) + 1) || 1
-      this.tabs = tabs
-      this.tabLowerBound = 1;
-      this.tabUpperBound = tabs > 10 ? 10 : tabs;
-      this.currentPage = 1;
+      if(value) {
+        const tabs = parseInt(value.length/20) + 1
+        this.tabs = tabs
+        this.tabLowerBound = 1;
+        this.tabUpperBound = tabs > 10 ? 10 : tabs;
+        this.currentPage = 1;
+      }
     },
     currentPage(value) {
       if(value == this.tabUpperBound && this.tabUpperBound != this.tabs){

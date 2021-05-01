@@ -4,16 +4,13 @@
       <span class="navbar-brand">
         Bhavcopy
       </span>
-      <a href="https://github.com/allenabraham777/zerodha-equity-publisher" class="btn btn-outline-light ml-auto"
+      <a
+        href="https://github.com/allenabraham777/zerodha-equity-publisher"
+        class="btn btn-outline-light ml-auto"
         ><i class="fa fa-github" aria-hidden="true"></i
       ></a>
     </nav>
-    <div v-if="loading" class="my-5 pt-5 text-center">
-      <div class="spinner-grow text-primary" style="margin-top: 100px;" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-    <div v-else class="mt-5 pt-5">
+    <div class="mt-5 pt-5">
       <h4 v-if="lastUpdated" class="text-center text-decoration-underline">
         Bhavcopy for the date {{ lastUpdated }}
       </h4>
@@ -44,6 +41,15 @@
             </div>
           </div>
         </form>
+      </div>
+      <div v-if="loading" class="my-5 pt-5 text-center">
+        <div
+          class="spinner-grow text-primary"
+          style="margin-top: 100px;"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
       <Body v-bind:equities="equities" />
     </div>
